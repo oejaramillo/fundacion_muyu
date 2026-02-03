@@ -1,0 +1,79 @@
+# Dependencias
+node_modules/
+.pnp/
+.pnp.js
+
+# Build y compilación
+.next/
+.build/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+
+# Variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Archivos del sistema operativo
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.settings/
+*.code-workspace
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# Vercel
+.vercel/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Debug
+.npm/
+.eslintcache
+
+# Caché
+.cache/
+*.cache
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Archivos de Abacus AI (no eliminar)
+!.abacus.donotdelete

@@ -1,0 +1,42 @@
+// Esquema de base de datos para Fundación Muyu
+// Tablas: donaciones y mensajes de contacto
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/fundacion_muyu/nextjs_space/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+// Modelo para almacenar donaciones
+model Donation {
+  id          Int      @id @default(autoincrement())
+  name        String   // Nombre del donante
+  email       String   // Correo electrónico
+  amount      Float    // Monto de la donación
+  currency    String   @default("USD") // Moneda
+  message     String?  // Mensaje opcional del donante
+  anonymous   Boolean  @default(false) // Si desea ser anónimo
+  status      String   @default("pending") // Estado: pending, completed, cancelled
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Modelo para mensajes de contacto (consultoría)
+model ContactMessage {
+  id           Int      @id @default(autoincrement())
+  name         String   // Nombre del contacto
+  email        String   // Correo electrónico
+  company      String?  // Empresa u organización
+  phone        String?  // Teléfono opcional
+  serviceType  String   // Tipo de servicio de interés
+  subject      String   // Asunto del mensaje
+  message      String   // Contenido del mensaje
+  status       String   @default("new") // Estado: new, read, responded, archived
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
