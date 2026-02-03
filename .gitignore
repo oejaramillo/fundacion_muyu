@@ -11,6 +11,10 @@ dist/
 build/
 *.tsbuildinfo
 
+# files
+nextjs_space/.yarnrc.yml
+nextjs_space/package-lock.json
+
 # Testing
 coverage/
 .nyc_output/
