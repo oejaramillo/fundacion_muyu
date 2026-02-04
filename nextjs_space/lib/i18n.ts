@@ -48,11 +48,16 @@ export const translations = {
       amountLabel: 'Monto de Donación',
       nameLabel: 'Nombre Completo',
       emailLabel: 'Correo Electrónico',
+      phoneLabel: 'Teléfono',
+      addressLabel: 'Dirección',
+      cityLabel: 'Ciudad',
+      countryLabel: 'País',
       messageLabel: 'Mensaje (Opcional)',
-      anonymousLabel: 'Deseo que mi donación sea anónima',
+      // anonymousLabel: 'Deseo que mi donación sea anónima', // Comentado temporalmente
       submitButton: 'Realizar Donación',
       thankYou: '¡Gracias por tu generosidad!',
       successMessage: 'Tu donación ha sido registrada exitosamente. Te contactaremos pronto con los detalles para completar el proceso.',
+      contactNote: 'Nos pondremos en contacto contigo para coordinar el proceso de donación y enviarte el comprobante correspondiente.',
     },
     // Sección Sobre Nosotros
     about: {
@@ -150,11 +155,16 @@ export const translations = {
       amountLabel: 'Donation Amount',
       nameLabel: 'Full Name',
       emailLabel: 'Email Address',
+      phoneLabel: 'Phone',
+      addressLabel: 'Address',
+      cityLabel: 'City',
+      countryLabel: 'Country',
       messageLabel: 'Message (Optional)',
-      anonymousLabel: 'I wish my donation to be anonymous',
+      // anonymousLabel: 'I wish my donation to be anonymous', // Temporarily commented
       submitButton: 'Make Donation',
       thankYou: 'Thank you for your generosity!',
       successMessage: 'Your donation has been registered successfully. We will contact you soon with details to complete the process.',
+      contactNote: 'We will contact you to coordinate the donation process and send you the corresponding receipt.',
     },
     // About Section
     about: {

@@ -13,11 +13,17 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email ?? '');
 }
 
+// Validación de teléfono (formato flexible)
+function isValidPhone(phone: string): boolean {
+  const phoneRegex = /^[\+]?[0-9\s\-\(\)]{7,15}$/;
+  return phoneRegex.test(phone ?? '');
+}
+
 // POST: Crear nueva donación
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, amount, currency, message, anonymous } = body ?? {};
+    const { name, email, phone, address, city, country, amount, currency, message } = body ?? {};
 
     // Validaciones
     if (!name?.trim()) {
@@ -30,6 +36,14 @@ export async function POST(request: NextRequest) {
     if (!email?.trim() || !isValidEmail(email)) {
       return NextResponse.json(
         { error: 'Correo electrónico inválido' },
+        { status: 400 }
+      );
+    }
+
+    // Validar teléfono si se proporciona
+    if (phone?.trim() && !isValidPhone(phone.trim())) {
+      return NextResponse.json(
+        { error: 'Formato de teléfono inválido' },
         { status: 400 }
       );
     }
@@ -47,10 +61,14 @@ export async function POST(request: NextRequest) {
       data: {
         name: name?.trim() ?? '',
         email: email?.trim()?.toLowerCase() ?? '',
+        phone: phone?.trim() || null,
+        address: address?.trim() || null,
+        city: city?.trim() || null,
+        country: country?.trim() || 'Ecuador',
         amount: parsedAmount,
         currency: currency ?? 'USD',
         message: message?.trim() || null,
-        anonymous: Boolean(anonymous),
+        // anonymous: Boolean(anonymous), // Comentado temporalmente
         status: 'pending',
       },
     });

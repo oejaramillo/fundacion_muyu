@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { motion } from 'framer-motion';
-import { Heart, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Heart, CheckCircle2, AlertCircle, Loader2, Phone, MapPin } from 'lucide-react';
 
 const predefinedAmounts = [25, 50, 100, 250, 500];
 
@@ -14,9 +14,13 @@ export function DonatePageContent() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    address: '',
+    city: '',
+    country: 'Ecuador',
     amount: '',
     message: '',
-    anonymous: false,
+    // anonymous: false, // Comentado temporalmente
   });
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,15 +48,29 @@ export function DonatePageContent() {
         body: JSON.stringify({
           name: formData?.name ?? '',
           email: formData?.email ?? '',
+          phone: formData?.phone ?? '',
+          address: formData?.address ?? '',
+          city: formData?.city ?? '',
+          country: formData?.country ?? 'Ecuador',
           amount: parseFloat(formData?.amount ?? '0'),
           message: formData?.message ?? '',
-          anonymous: formData?.anonymous ?? false,
+          // anonymous: formData?.anonymous ?? false, // Comentado temporalmente
         }),
       });
 
       if (response?.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', amount: '', message: '', anonymous: false });
+        setFormData({ 
+          name: '', 
+          email: '', 
+          phone: '', 
+          address: '', 
+          city: '', 
+          country: 'Ecuador', 
+          amount: '', 
+          message: '', 
+          // anonymous: false 
+        });
         setSelectedAmount(null);
       } else {
         setSubmitStatus('error');
@@ -90,7 +108,7 @@ export function DonatePageContent() {
 
       {/* Formulario */}
       <section className="py-16">
-        <div className="max-w-[600px] mx-auto px-4 sm:px-6">
+        <div className="max-w-[700px] mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,7 +124,7 @@ export function DonatePageContent() {
                   {t?.donate?.thankYou ?? '¡Gracias!'}
                 </h2>
                 <p className="text-gray-600">
-                  {t?.donate?.successMessage ?? 'Tu donación ha sido registrada.'}
+                  {t?.donate?.successMessage ?? 'Tu donación ha sido registrada. Te contactaremos pronto.'}
                 </p>
               </div>
             ) : (
@@ -114,7 +132,7 @@ export function DonatePageContent() {
                 {/* Montos predefinidos */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-3">
-                    {t?.donate?.amountLabel ?? 'Monto de Donación'} (USD)
+                    {t?.donate?.amountLabel ?? 'Monto de Donación'} (USD) *
                   </label>
                   <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-3">
                     {predefinedAmounts?.map?.((amount) => (
@@ -143,32 +161,105 @@ export function DonatePageContent() {
                   />
                 </div>
 
-                {/* Nombre */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t?.donate?.nameLabel ?? 'Nombre Completo'} *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData?.name ?? ''}
-                    onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), name: e?.target?.value ?? '' }))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                  />
-                </div>
+                {/* Información Personal */}
+                <div className="border-t pt-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <Heart className="w-5 h-5 text-teal-600" />
+                    {locale === 'es' ? 'Información de Contacto' : 'Contact Information'}
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Nombre */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t?.donate?.nameLabel ?? 'Nombre Completo'} *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData?.name ?? ''}
+                        onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), name: e?.target?.value ?? '' }))}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      />
+                    </div>
 
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t?.donate?.emailLabel ?? 'Correo Electrónico'} *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData?.email ?? ''}
-                    onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), email: e?.target?.value ?? '' }))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                  />
+                    {/* Email */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t?.donate?.emailLabel ?? 'Correo Electrónico'} *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData?.email ?? ''}
+                        onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), email: e?.target?.value ?? '' }))}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      />
+                    </div>
+
+                    {/* Teléfono */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
+                        <Phone className="w-4 h-4" />
+                        {locale === 'es' ? 'Teléfono' : 'Phone'}
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData?.phone ?? ''}
+                        onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), phone: e?.target?.value ?? '' }))}
+                        placeholder={locale === 'es' ? '+593 99 123 4567' : '+593 99 123 4567'}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      />
+                    </div>
+
+                    {/* Dirección */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {locale === 'es' ? 'Dirección' : 'Address'}
+                      </label>
+                      <input
+                        type="text"
+                        value={formData?.address ?? ''}
+                        onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), address: e?.target?.value ?? '' }))}
+                        placeholder={locale === 'es' ? 'Calle, número, sector' : 'Street, number, sector'}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      />
+                    </div>
+
+                    {/* Ciudad */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {locale === 'es' ? 'Ciudad' : 'City'}
+                      </label>
+                      <input
+                        type="text"
+                        value={formData?.city ?? ''}
+                        onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), city: e?.target?.value ?? '' }))}
+                        placeholder={locale === 'es' ? 'Quito, Guayaquil, etc.' : 'Quito, Guayaquil, etc.'}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      />
+                    </div>
+
+                    {/* País */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {locale === 'es' ? 'País' : 'Country'}
+                      </label>
+                      <select
+                        value={formData?.country ?? 'Ecuador'}
+                        onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), country: e?.target?.value ?? 'Ecuador' }))}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                      >
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Perú">Perú</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="España">España</option>
+                        <option value="Otro">{locale === 'es' ? 'Otro' : 'Other'}</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Mensaje */}
@@ -180,12 +271,23 @@ export function DonatePageContent() {
                     rows={3}
                     value={formData?.message ?? ''}
                     onChange={(e) => setFormData((prev) => ({ ...(prev ?? {}), message: e?.target?.value ?? '' }))}
+                    placeholder={locale === 'es' ? 'Cuéntanos por qué quieres apoyar nuestra misión...' : 'Tell us why you want to support our mission...'}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
                   />
                 </div>
 
-                {/* Anónimo */}
-                <div className="flex items-center gap-3">
+                {/* Nota sobre contacto */}
+                <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
+                  <p className="text-sm text-teal-800">
+                    {locale === 'es' 
+                      ? '📞 Nos pondremos en contacto contigo para coordinar el proceso de donación y enviarte el comprobante correspondiente.'
+                      : '📞 We will contact you to coordinate the donation process and send you the corresponding receipt.'
+                    }
+                  </p>
+                </div>
+
+                {/* Anónimo - Comentado temporalmente */}
+                {/* <div className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     id="anonymous"
@@ -196,7 +298,7 @@ export function DonatePageContent() {
                   <label htmlFor="anonymous" className="text-gray-700">
                     {t?.donate?.anonymousLabel ?? 'Deseo que mi donación sea anónima'}
                   </label>
-                </div>
+                </div> */}
 
                 {/* Error */}
                 {submitStatus === 'error' && (
@@ -209,7 +311,7 @@ export function DonatePageContent() {
                 {/* Submit */}
                 <button
                   type="submit"
-                  disabled={isSubmitting || !formData?.amount}
+                  disabled={isSubmitting || !formData?.amount || !formData?.name || !formData?.email}
                   className="w-full py-4 bg-gradient-to-r from-teal-600 to-green-600 hover:from-teal-500 hover:to-green-500 text-white font-bold rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (

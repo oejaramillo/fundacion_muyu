@@ -4,7 +4,6 @@
 generator client {
     provider = "prisma-client-js"
     binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
-    output = "/home/ubuntu/fundacion_muyu/nextjs_space/node_modules/.prisma/client"
 }
 
 datasource db {
@@ -17,10 +16,14 @@ model Donation {
   id          Int      @id @default(autoincrement())
   name        String   // Nombre del donante
   email       String   // Correo electrónico
+  phone       String?  // Teléfono de contacto
+  address     String?  // Dirección (opcional)
+  city        String?  // Ciudad
+  country     String   @default("Ecuador") // País
   amount      Float    // Monto de la donación
   currency    String   @default("USD") // Moneda
   message     String?  // Mensaje opcional del donante
-  anonymous   Boolean  @default(false) // Si desea ser anónimo
+  // anonymous   Boolean  @default(false) // Si desea ser anónimo - COMENTADO temporalmente
   status      String   @default("pending") // Estado: pending, completed, cancelled
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
