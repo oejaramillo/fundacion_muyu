@@ -30,6 +30,9 @@ const nextConfig = {
     }
     return config;
   },
+  // Evitar pre-renderizado de rutas API durante el build
+  trailingSlash: false,
+  skipTrailingSlashRedirect: true,
 };
 
 module.exports = nextConfig;

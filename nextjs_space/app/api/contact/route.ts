@@ -2,9 +2,9 @@
 // POST: Crear nuevo mensaje de contacto
 
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 // Validación de email
 function isValidEmail(email: string): boolean {
@@ -15,6 +15,9 @@ function isValidEmail(email: string): boolean {
 // POST: Crear nuevo mensaje de contacto
 export async function POST(request: NextRequest) {
   try {
+    // Importación dinámica de Prisma para evitar problemas durante el build
+    const { prisma } = await import('@/lib/db');
+    
     const body = await request.json();
     const { name, email, company, phone, serviceType, subject, message } = body ?? {};
 

@@ -3,9 +3,9 @@
 // GET: Obtener lista de donaciones (solo para admin en futuro)
 
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 // Validación de email
 function isValidEmail(email: string): boolean {
@@ -22,6 +22,9 @@ function isValidPhone(phone: string): boolean {
 // POST: Crear nueva donación
 export async function POST(request: NextRequest) {
   try {
+    // Importación dinámica de Prisma para evitar problemas durante el build
+    const { prisma } = await import('@/lib/db');
+    
     const body = await request.json();
     const { name, email, phone, address, city, country, amount, currency, message } = body ?? {};
 
@@ -93,6 +96,9 @@ export async function POST(request: NextRequest) {
 // GET: Obtener donaciones (simplificado para demo)
 export async function GET() {
   try {
+    // Importación dinámica de Prisma para evitar problemas durante el build
+    const { prisma } = await import('@/lib/db');
+    
     const count = await prisma.donation.count();
     const total = await prisma.donation.aggregate({
       _sum: { amount: true },
