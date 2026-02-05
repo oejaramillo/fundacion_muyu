@@ -20,6 +20,16 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  experimental: {
+    outputFileTracingRoot: process.cwd(),
+  },
+  // Configuración específica para Vercel y Prisma
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push('_http_common');
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;
