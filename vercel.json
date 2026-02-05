@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "nextjs_space/app/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  }
-}
