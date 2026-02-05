@@ -22,8 +22,14 @@ function isValidPhone(phone: string): boolean {
 // POST: Crear nueva donación
 export async function POST(request: NextRequest) {
   try {
+    // Verificar que estamos en runtime, no en build time
+    if (typeof window !== 'undefined') {
+      return NextResponse.json({ error: 'API route called from client' }, { status: 400 });
+    }
+
     // Importación dinámica de Prisma para evitar problemas durante el build
-    const { prisma } = await import('@/lib/db');
+    const { getPrismaClient } = await import('@/lib/db');
+    const prisma = await getPrismaClient();
     
     const body = await request.json();
     const { name, email, phone, address, city, country, amount, currency, message } = body ?? {};
@@ -96,8 +102,14 @@ export async function POST(request: NextRequest) {
 // GET: Obtener donaciones (simplificado para demo)
 export async function GET() {
   try {
+    // Verificar que estamos en runtime, no en build time
+    if (typeof window !== 'undefined') {
+      return NextResponse.json({ error: 'API route called from client' }, { status: 400 });
+    }
+
     // Importación dinámica de Prisma para evitar problemas durante el build
-    const { prisma } = await import('@/lib/db');
+    const { getPrismaClient } = await import('@/lib/db');
+    const prisma = await getPrismaClient();
     
     const count = await prisma.donation.count();
     const total = await prisma.donation.aggregate({

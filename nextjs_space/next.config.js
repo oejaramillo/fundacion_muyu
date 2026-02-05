@@ -22,6 +22,7 @@ const nextConfig = {
   },
   experimental: {
     outputFileTracingRoot: process.cwd(),
+    serverComponentsExternalPackages: ['@prisma/client', 'prisma'],
   },
   // Configuración específica para Vercel y Prisma
   webpack: (config, { isServer }) => {

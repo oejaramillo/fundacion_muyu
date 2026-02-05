@@ -15,8 +15,14 @@ function isValidEmail(email: string): boolean {
 // POST: Crear nuevo mensaje de contacto
 export async function POST(request: NextRequest) {
   try {
+    // Verificar que estamos en runtime, no en build time
+    if (typeof window !== 'undefined') {
+      return NextResponse.json({ error: 'API route called from client' }, { status: 400 });
+    }
+
     // Importación dinámica de Prisma para evitar problemas durante el build
-    const { prisma } = await import('@/lib/db');
+    const { getPrismaClient } = await import('@/lib/db');
+    const prisma = await getPrismaClient();
     
     const body = await request.json();
     const { name, email, company, phone, serviceType, subject, message } = body ?? {};
@@ -86,4 +92,9 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+// Función GET vacía para evitar que Next.js trate de pre-renderizar
+export async function GET() {
+  return NextResponse.json({ message: 'Contact API endpoint' });
 }
