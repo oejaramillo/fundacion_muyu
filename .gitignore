@@ -58,6 +58,7 @@ Desktop.ini
 # Prisma
 prisma/*.db
 prisma/*.db-journal
+nextjs_space/prisma/migrations
 
 # Vercel
 .vercel/

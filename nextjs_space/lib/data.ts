@@ -38,23 +38,6 @@ export const projects = [
   },
   {
     id: 3,
-    slug: 'mujeres-emprendedoras',
-    title: {
-      es: 'Mujeres Emprendedoras',
-      en: 'Women Entrepreneurs',
-    },
-    description: {
-      es: 'Programa de microfinanzas y capacitación empresarial para 200 mujeres de comunidades rurales, fortaleciendo sus negocios artesanales y agrícolas.',
-      en: 'Microfinance and business training program for 200 women from rural communities, strengthening their artisanal and agricultural businesses.',
-    },
-    image: 'https://cdn.abacus.ai/images/c6c735dc-313f-4911-b0b2-33a023e1ceed.png',
-    category: { es: 'Desarrollo Económico', en: 'Economic Development' },
-    beneficiaries: 200,
-    year: 2024,
-    status: { es: 'En curso', en: 'Ongoing' },
-  },
-  {
-    id: 4,
     slug: 'agricultura-sostenible',
     title: {
       es: 'Agricultura Sostenible',
@@ -71,7 +54,7 @@ export const projects = [
     status: { es: 'Completado', en: 'Completed' },
   },
   {
-    id: 5,
+    id: 4,
     slug: 'salud-comunitaria',
     title: {
       es: 'Salud Comunitaria Integral',
@@ -86,24 +69,7 @@ export const projects = [
     beneficiaries: 3200,
     year: 2024,
     status: { es: 'En curso', en: 'Ongoing' },
-  },
-  {
-    id: 6,
-    slug: 'jovenes-lideres',
-    title: {
-      es: 'Jóvenes Líderes del Mañana',
-      en: 'Youth Leaders of Tomorrow',
-    },
-    description: {
-      es: 'Programa de formación en liderazgo, emprendimiento social y habilidades para la vida dirigido a 150 jóvenes de comunidades rurales y periurbanas.',
-      en: 'Leadership, social entrepreneurship, and life skills training program for 150 young people from rural and peri-urban communities.',
-    },
-    image: 'https://cdn.abacus.ai/images/79086b48-727c-472c-98e6-784f7fb1e1d7.png',
-    category: { es: 'Juventud', en: 'Youth' },
-    beneficiaries: 150,
-    year: 2024,
-    status: { es: 'En curso', en: 'Ongoing' },
-  },
+  }
 ];
 
 export const services = [
@@ -222,62 +188,49 @@ export const services = [
 export const team = [
   {
     id: 1,
-    name: 'Dra. María Elena Vásquez',
+    name: 'Eco. Alexander Fernández Msc.',
     role: {
-      es: 'Directora Ejecutiva',
+      es: 'Director Ejecutivo',
       en: 'Executive Director',
     },
     bio: {
-      es: 'Economista con PhD en Desarrollo Sostenible por la Universidad de Oxford. Más de 15 años de experiencia liderando proyectos de desarrollo social en América Latina.',
-      en: 'Economist with a PhD in Sustainable Development from Oxford University. Over 15 years of experience leading social development projects in Latin America.',
+      es: 'Economista de la Universidad Central del Ecuador y Master en economía del desarrollo por FLACSO Ecuador.',
+      en: 'Economist from the University of Central Ecuador and Master of Economic Development by FLACSO Ecuador.',
     },
     image: 'https://cdn.abacus.ai/images/285fde3b-4107-4f77-9afd-9341d8fface2.png',
   },
   {
     id: 2,
-    name: 'Dr. Carlos Andrés Mendoza',
+    name: 'Eco. Richard Ramírez',
     role: {
-      es: 'Director de Investigación',
-      en: 'Research Director',
+      es: 'Director de Consultorías',
+      en: 'Consulting Director',
     },
     bio: {
-      es: 'Sociólogo especializado en métodos cuantitativos y evaluación de impacto. Ha publicado más de 30 artículos en revistas indexadas sobre desarrollo rural.',
-      en: 'Sociologist specialized in quantitative methods and impact evaluation. Has published over 30 articles in indexed journals on rural development.',
+      es: 'Economista de la Universidad Central del Ecuador, candidato a master en economía por la universidad Torcuato di Tella en Buenos Aires, Argentina.',
+      en: 'Economist from the University of Central Ecuador, candidate to master in economics by Torcuato di Tella University in Buenos Aires, Argentina.',
     },
     image: 'https://cdn.abacus.ai/images/6b70ec0d-c4e3-4465-9ac1-dfd32851c3d5.png',
   },
   {
     id: 3,
-    name: 'Gabriela Fernanda Torres',
+    name: 'Eco. Oscar Jaramillo Vásconez Msc.',
     role: {
-      es: 'Coordinadora de Proyectos',
-      en: 'Projects Coordinator',
+      es: 'Coordinador de Proyectos e investigación',
+      en: 'Projects and research Coordinator',
     },
     bio: {
-      es: 'Ingeniera en Gestión Social con maestría en Cooperación Internacional. Experta en diseño y ejecución de proyectos con enfoque de género e interculturalidad.',
-      en: 'Social Management Engineer with a master\'s in International Cooperation. Expert in project design and execution with a gender and intercultural focus.',
+      es: 'Economista de la Universidad Central del Ecuador y Master en economía por la universidad Torcuato di Tella en Buenos Aires, Argentina.',
+      en: 'Economist from the University of Central Ecuador and Master in economics by Torcuato di Tella University in Buenos Aires, Argentina.',
     },
     image: 'https://cdn.abacus.ai/images/70985c4e-b6b6-45be-a7f2-c20f92a650dc.png',
-  },
-  {
-    id: 4,
-    name: 'Ing. Roberto Alejandro Paz',
-    role: {
-      es: 'Director de Consultoría',
-      en: 'Consulting Director',
-    },
-    bio: {
-      es: 'Economista con MBA en Estrategia Empresarial. 20 años de experiencia en consultoría para organismos internacionales, gobierno y sector privado.',
-      en: 'Economist with MBA in Business Strategy. 20 years of experience in consulting for international organizations, government, and private sector.',
-    },
-    image: 'https://cdn.abacus.ai/images/a91ae9c8-8c03-448b-bdff-815777b94a90.png',
-  },
+  }
 ];
 
 // Estadísticas de impacto
 export const impactStats = {
-  projects: 45,
-  beneficiaries: 12500,
-  communities: 78,
-  years: 7,
+  projects: 1,
+  beneficiaries: 0,
+  communities: 0,
+  years: 1,
 };
