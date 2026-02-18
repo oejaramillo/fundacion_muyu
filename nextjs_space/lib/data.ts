@@ -194,8 +194,8 @@ export const team = [
       en: 'Executive Director',
     },
     bio: {
-      es: 'Economista de la Universidad Central del Ecuador y Master en economía del desarrollo por FLACSO Ecuador.',
-      en: 'Economist from the University of Central Ecuador and Master of Economic Development by FLACSO Ecuador.',
+      es: 'Economista por la Universidad Central del Ecuador y máster en Economía del Desarrollo por FLACSO – Ecuador. Cuenta con experiencia en evaluación, seguimiento y monitoreo de programas, así como en investigación aplicada en desarrollo social y políticas públicas. Ha trabajado en la generación de indicadores y en el análisis cualitativo y cuantitativo orientado a la toma de decisiones estratégicas, tanto en el sector público como privado. Ha participado en proyectos de investigación sobre pobreza, desigualdad y desarrollo territorial, integrando enfoques técnicos y evidencia empírica. Sus líneas de interés incluyen desarrollo económico, políticas sociales, monitoreo y evaluación de programas, métodos cualitativos y cuantitativos.',
+      en: "Economist from the Central University of Ecuador and holds a Master's degree in Development Economics from FLACSO – Ecuador. He has experience in evaluation, monitoring, and supervision of programs, as well as in applied research in social development and public policies. Has worked on generating indicators and qualitative and quantitative analysis aimed at strategic decision-making, both in the public and private sectors also has participated in research projects on poverty, inequality, and territorial development, integrating technical approaches and empirical evidence. His areas of interest include economic development, social policies, program monitoring and evaluation, and qualitative and quantitative methods.",
     },
     image: 'https://cdn.abacus.ai/images/285fde3b-4107-4f77-9afd-9341d8fface2.png',
   },
@@ -207,8 +207,8 @@ export const team = [
       en: 'Consulting Director',
     },
     bio: {
-      es: 'Economista de la Universidad Central del Ecuador, candidato a master en economía por la universidad Torcuato di Tella en Buenos Aires, Argentina.',
-      en: 'Economist from the University of Central Ecuador, candidate to master in economics by Torcuato di Tella University in Buenos Aires, Argentina.',
+      es: 'Economista por la Universidad Central del Ecuador y candidato a máster en economía por la Universidad Torcuato Di Tella. Ha trabajado como docente en la Universidad Central del Ecador, universidad UTE y cómo asistente en Torcuato di Tella. Ha trabajado como investigador en diversas instituciones públicas y privadas, incluyendo el Instituto de Investigaciones Económicas de la Universidad Central del Ecuador y Grupo FARO. Sus líneas de investigación incluyen el poder de mercado, la competencia económica, la pobreza, la desigualdad, el desarrollo económico, macroeconomía, econometría y machine learning.',
+      en: "Economist from the Central University of Ecuador and a master's candidate in economics at Torcuato Di Tella University. He has worked as a lecturer at the Central University of Ecuador, UTE University, and as an assistant at Torcuato Di Tella. He has worked as a researcher in various public and private institutions, including the Economic Research Institute of the Central University of Ecuador and Grupo FARO. His research areas include market power, economic competition, poverty, inequality, economic development, macroeconomics, econometrics, and machine learning.",
     },
     image: 'https://cdn.abacus.ai/images/6b70ec0d-c4e3-4465-9ac1-dfd32851c3d5.png',
   },
@@ -220,8 +220,8 @@ export const team = [
       en: 'Projects and research Coordinator',
     },
     bio: {
-      es: 'Economista de la Universidad Central del Ecuador y Master en economía por la universidad Torcuato di Tella en Buenos Aires, Argentina.',
-      en: 'Economist from the University of Central Ecuador and Master in economics by Torcuato di Tella University in Buenos Aires, Argentina.',
+      es: 'Economista de la Universidad Central del Ecuador y Master en economía por la universidad Torcuato di Tella en Buenos Aires, Argentina. Cuenta con experiencia en investigación y diseño e implementación de proyectos públicos y privados',
+      en: 'Economist from the University of Central Ecuador and Master in economics by Torcuato di Tella University in Buenos Aires, Argentina. Has experience in research, design and implementarion in public and private projects',
     },
     image: 'https://cdn.abacus.ai/images/70985c4e-b6b6-45be-a7f2-c20f92a650dc.png',
   }
